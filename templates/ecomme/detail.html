@@ -1,10 +1,14 @@
 {% extends 'menu/base.html' %}
 
-{% load static %}
+
 
 {% block title %}Detail{% endblock %}
 
 {% block content %}
+
+{% load produit_tags %}
+
+{% load static %}
     
 {% include 'menu/navbar.html' %}
 
@@ -63,7 +67,7 @@
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">${{produit.prix}}</h3>
+                    <h3 class="font-weight-semi-bold mb-4">${% call_sellprice produit.prix produit.rabais %}</h3>
                     <p class="mb-4">{{produit.info_produit|safe|truncatewords:50}}</p>
                     <div class="d-flex mb-3">
                         <strong class="text-dark mr-3">Sizes:</strong>

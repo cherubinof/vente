@@ -75,6 +75,8 @@ class Produit(models.Model):
         from django.urls import reverse
         return reverse("", kwargs={'slug':self.slug})
     
+    class Meta:
+        db_table = "ecomme_produit"
    
 
 def create_slug(instance, new_slug=None):
