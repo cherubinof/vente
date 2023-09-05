@@ -1,0 +1,68 @@
+{% extends 'menu/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+{% include 'menu/navbar.html' %}
+
+<!-- Sign Up Start -->
+<div class="container-fluid">
+    <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+            <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <a href="" class="">
+                        <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Creer compte</h3>
+                    </a>
+                    
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <label for="floatingText">Username</label>
+                        <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="username">
+                        
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="floatingInput">Email address</label>
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                        
+                    </div>
+                    <div class="form-floating mb-4">
+                        <label for="floatingPassword">Password</label>
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                        
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Creer</button>
+                    <p class="text-center mb-0">Votre compte existe deja? <a href="{% url 'login' %}">Connexion</a></p>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sign Up End -->
+
+{% endblock %}

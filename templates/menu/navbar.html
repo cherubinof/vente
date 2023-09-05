@@ -8,17 +8,46 @@
                 <a class="text-body mr-3" href="{% url 'contact' %}">Contact</a>
                 <a class="text-body mr-3" href="">Help</a>
                 <a class="text-body mr-3" href="">FAQs</a>
+                <a href=""><div class="support d-none d-sm-block mt-3 text-success">
+                    {% if user.is_authenticated %}
+                    <p>
+                        welcome
+                        {% if user.first_name == '' %}
+                        {{user.email}}
+                        {% else %}
+                        {{user.first_name}}
+                        {% endif %}
+                    </p>
+                    {% else %}
+                    <p>svp connecte-vous </p>
+                    {% endif %}
+                </div></a>
             </div>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
+                {% if user.is_authenticated %}
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                        {{request.user.username}}
+                    </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">Sign in</button>
-                        <button class="dropdown-item" type="button">Sign up</button>
+                       <a href="{% url 'profile' %}"> <button class="dropdown-item" type="button">Profile</button></a> 
+                       <a href="{% url 'logout' %}"> <button class="dropdown-item" type="button">Deconnexion</button></a> 
+                      
                     </div>
                 </div>
+                {% else %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                        Mon Compte
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                       <a href="{% url 'login' %}"> <button class="dropdown-item" type="button">Connexion</button></a> 
+                       <a href="{% url 'register' %}"> <button class="dropdown-item" type="button">Compte</button></a> 
+                    </div>
+                </div>
+                {% endif %}
                 <div class="btn-group mx-2">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                     <div class="dropdown-menu dropdown-menu-right">

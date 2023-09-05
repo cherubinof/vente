@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t23p5uxbj=)m9y$44c&=6*q_-8f9@es7hzxw8v)!d&kp^&c17n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -184,3 +184,16 @@ CKEDITOR_CONFIGS = {
         ),
     }
 }
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tiossepcherubin@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.emailbackend'
+
+
+LOGIN_REDIRECT_URL = 'accueil'
+LOGOUT_REDIRECT_URL = 'accueil'

@@ -10,3 +10,9 @@ def call_sellprice(prix, rabais):
     sellprice = prix
     sellprice = prix - (prix * rabais/100)
     return math.floor(sellprice)
+
+@register.simple_tag
+def progress_bar(quantite_total, disponibilite):
+    progress_bar = disponibilite
+    progress_bar = disponibilite * (100/quantite_total)
+    return math.floor(progress_bar)
